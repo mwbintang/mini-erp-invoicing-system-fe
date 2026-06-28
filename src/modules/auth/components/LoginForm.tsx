@@ -7,9 +7,9 @@ import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { AuthService } from '@/services/auth.service';
 import { ROUTES } from '@/config/routes';
+import { Hexagon } from 'lucide-react';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -41,55 +41,76 @@ export function LoginForm() {
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="space-y-2 text-center">
-        <CardTitle className="text-3xl font-bold">Sign In</CardTitle>
-        <p className="text-sm text-gray-500">Enter your credentials to access the ERP</p>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700" htmlFor="email">
-              Email
+    <div>
+      <div className="flex items-center gap-2 mb-8">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/20">
+          <Hexagon className="h-6 w-6 text-white" />
+        </div>
+        <span className="text-2xl font-bold tracking-tight text-gray-900">NexaERP</span>
+      </div>
+      
+      <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+        Sign in to your account
+      </h2>
+      <p className="mt-2 text-sm text-gray-600">
+        Enter your credentials to access the ERP
+      </p>
+
+      <div className="mt-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700" htmlFor="email">
+              Email address
             </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="admin@example.com"
-              {...register('email')}
-              disabled={isSubmitting}
-            />
+            <div className="mt-1">
+              <Input
+                id="email"
+                type="email"
+                placeholder="admin@example.com"
+                {...register('email')}
+                disabled={isSubmitting}
+                className="block w-full appearance-none rounded-xl border border-gray-200 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
             {errors.email && (
-              <p className="text-xs text-red-500">{errors.email.message}</p>
+              <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
             )}
           </div>
-          <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700" htmlFor="password">
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700" htmlFor="password">
               Password
             </label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              {...register('password')}
-              disabled={isSubmitting}
-            />
+            <div className="mt-1">
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                {...register('password')}
+                disabled={isSubmitting}
+                className="block w-full appearance-none rounded-xl border border-gray-200 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
             {errors.password && (
-              <p className="text-xs text-red-500">{errors.password.message}</p>
+              <p className="mt-1 text-xs text-red-500">{errors.password.message}</p>
             )}
           </div>
 
           {error && (
-            <div className="rounded-md bg-red-50 p-3 text-sm text-red-500">
+            <div className="rounded-xl bg-red-50 p-4 text-sm text-red-600 border border-red-100">
               {error}
             </div>
           )}
 
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button 
+            type="submit" 
+            className="flex w-full justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all" 
+            disabled={isSubmitting}
+          >
             {isSubmitting ? 'Signing in...' : 'Sign in'}
           </Button>
         </form>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
