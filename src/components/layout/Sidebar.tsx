@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Users, FileText, Settings, LogOut, Hexagon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { AuthService } from '@/services/auth.service';
+import { AuthService } from '@/modules/auth/services/auth.service';
 import { useRouter } from 'next/navigation';
 
 const navigation = [

@@ -3,12 +3,12 @@ import { MoreHorizontal, Edit, Trash, Eye } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 
-interface CustomerActionsDropdownProps {
-  customerId: string;
+interface InvoiceActionsDropdownProps {
+  invoiceId: string;
   onDeleteClick: () => void;
 }
 
-export function CustomerActionsDropdown({ customerId, onDeleteClick }: CustomerActionsDropdownProps) {
+export function InvoiceActionsDropdown({ invoiceId, onDeleteClick }: InvoiceActionsDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownStyle, setDropdownStyle] = useState({});
   const router = useRouter();
@@ -65,13 +65,13 @@ export function CustomerActionsDropdown({ customerId, onDeleteClick }: CustomerA
         >
           <div className="py-1" role="menu">
             <button
-              onClick={() => router.push(`/customers/${customerId}`)}
+              onClick={() => router.push(`/invoices/${invoiceId}`)}
               className="flex w-full items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
             >
               <Eye className="mr-3 h-4 w-4" /> View Details
             </button>
             <button
-              onClick={() => router.push(`/customers/${customerId}/edit`)}
+              onClick={() => router.push(`/invoices/${invoiceId}/edit`)}
               className="flex w-full items-center px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors"
             >
               <Edit className="mr-3 h-4 w-4" /> Edit

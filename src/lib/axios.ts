@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_CONFIG } from '@/config/api';
 
-import { useAuthStore } from '@/store/auth.store';
+import { useAuthStore } from '@/modules/auth/store/auth.store';
 
 const axiosInstance = axios.create({
   baseURL: API_CONFIG.BASE_URL,
@@ -48,7 +48,7 @@ axiosInstance.interceptors.response.use(
 
         useAuthStore.getState().updateTokens(data.accessToken, data.refreshToken);
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
-        return axios(originalRequest); // Retry original request with axios directly, or axiosInstance
+        return axiosInstance(originalRequest); // Retry original request with axios directly, or axiosInstance
       } catch (refreshError) {
         useAuthStore.getState().logout();
         if (typeof window !== 'undefined') {

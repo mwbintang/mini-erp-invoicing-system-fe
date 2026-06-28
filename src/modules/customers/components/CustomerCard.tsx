@@ -14,9 +14,8 @@ export function CustomerCard({ customer }: { customer: Customer }) {
             </div>
           </div>
         </div>
-        
+
         <h2 className="text-3xl font-bold text-gray-900">{customer.name}</h2>
-        <p className="mt-1 text-sm text-gray-500">Customer ID: {customer.id}</p>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50/50 p-4">

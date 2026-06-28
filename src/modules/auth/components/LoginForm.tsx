@@ -7,7 +7,7 @@ import * as z from 'zod';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { AuthService } from '@/services/auth.service';
+import { AuthService } from '@/modules/auth/services/auth.service';
 import { ROUTES } from '@/config/routes';
 import { Hexagon } from 'lucide-react';
 

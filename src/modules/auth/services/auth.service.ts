@@ -1,11 +1,10 @@
-import axiosInstance from '@/lib/axios';
-import { ENDPOINTS } from '@/config/api';
-import { LoginPayload, AuthResponse, User } from '@/types/auth';
-import { useAuthStore } from '@/store/auth.store';
+import { authApi } from '../api/auth.api';
+import { LoginPayload, AuthResponse, User } from '../types/auth.types';
+import { useAuthStore } from '../store/auth.store';
 
 export const AuthService = {
   login: async (payload: LoginPayload): Promise<AuthResponse> => {
-    const response = await axiosInstance.post<any, any>(ENDPOINTS.AUTH.LOGIN, payload);
+    const response = await authApi.login(payload);
     useAuthStore.getState().updateTokens(response.accessToken, response.refreshToken);
     
     // Now fetch profile since token is in store
@@ -19,7 +18,7 @@ export const AuthService = {
     try {
       const { refreshToken } = useAuthStore.getState();
       if (refreshToken) {
-        await axiosInstance.post('/auth/logout', { refreshToken });
+        await authApi.logout(refreshToken);
       }
     } finally {
       useAuthStore.getState().logout();
@@ -27,8 +26,8 @@ export const AuthService = {
   },
 
   getProfile: async (): Promise<User> => {
-    const response = await axiosInstance.get<any, User>('/auth/me');
-    useAuthStore.getState().updateUser(response);
-    return response;
+    const user = await authApi.getProfile();
+    useAuthStore.getState().updateUser(user);
+    return user;
   },
 };

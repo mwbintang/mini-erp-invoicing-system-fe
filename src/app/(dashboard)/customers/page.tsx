@@ -17,12 +17,12 @@ export default function CustomersPage() {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  
+
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [customerToDelete, setCustomerToDelete] = useState<Customer | null>(null);
 
   const { data, isLoading, error, refetch } = useCustomers({ page, limit: 10, search });
-  
+
   const { mutate: deleteCustomer, isLoading: isDeleting } = useDeleteCustomer(() => {
     setDeleteModalOpen(false);
     setCustomerToDelete(null);
@@ -52,7 +52,7 @@ export default function CustomersPage() {
         </Button>
       </div>
 
-      <div className="flex items-center justify-between bg-white p-4 rounded-md border shadow-sm">
+      <div className="flex items-center justify-between bg-white p-4 rounded-md shadow-sm">
         <CustomerSearch value={search} onChange={(val) => { setSearch(val); setPage(1); }} />
       </div>
 
@@ -70,10 +70,10 @@ export default function CustomersPage() {
         <>
           <CustomerTable customers={data?.data || []} onDeleteClick={handleDeleteClick} />
           {data?.meta && (
-            <CustomerPagination 
-              currentPage={data.meta.page} 
-              totalPages={data.meta.totalPages} 
-              onPageChange={setPage} 
+            <CustomerPagination
+              currentPage={data.meta.page}
+              totalPages={data.meta.totalPages}
+              onPageChange={setPage}
             />
           )}
         </>

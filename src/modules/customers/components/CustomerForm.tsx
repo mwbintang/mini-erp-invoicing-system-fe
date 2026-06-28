@@ -17,7 +17,7 @@ const customerSchema = z.object({
 
 interface CustomerFormProps {
   initialData?: CreateCustomerDto;
-  onSubmit: (data: CreateCustomerDto) => Promise<void>;
+  onSubmit: (data: CreateCustomerDto) => Promise<any>;
   isLoading?: boolean;
 }
 
