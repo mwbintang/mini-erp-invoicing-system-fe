@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Users, FileText, Settings, LogOut, Hexagon } from 'lucide-react';
+import { LayoutDashboard, Users, FileText, LogOut, Hexagon, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AuthService } from '@/modules/auth/services/auth.service';
 import { useRouter } from 'next/navigation';
@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Customers', href: '/customers', icon: Users },
   { name: 'Invoices', href: '/invoices', icon: FileText },
-  { name: 'Settings', href: '/settings', icon: Settings },
+  { name: 'Audit Logs', href: '/audit-logs', icon: Activity }
 ];
 
 export function Sidebar() {
