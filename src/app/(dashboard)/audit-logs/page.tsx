@@ -5,7 +5,7 @@ import { useAuditLogs } from '@/modules/audit-logs/hooks/useAuditLogs';
 import { AuditFilter } from '@/modules/audit-logs/components/AuditFilter';
 import { AuditTable } from '@/modules/audit-logs/components/AuditTable';
 import { AuditPagination } from '@/modules/audit-logs/components/AuditPagination';
-import { Spinner } from '@/components/ui/Spinner';
+import { TableSkeleton } from '@/components/ui/Skeleton';
 
 export default function AuditLogsPage() {
   const [page, setPage] = useState(1);
@@ -47,9 +47,7 @@ export default function AuditLogsPage() {
       )}
 
       {isLoading ? (
-        <div className="flex justify-center py-12">
-          <Spinner size="lg" />
-        </div>
+        <TableSkeleton rows={5} />
       ) : (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <AuditTable logs={data?.data || []} />

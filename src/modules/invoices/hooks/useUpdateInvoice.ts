@@ -13,7 +13,7 @@ export function useUpdateInvoice() {
       setIsLoading(true);
       setError(null);
       await invoicesService.updateInvoice(id, data);
-      router.push(`/invoices/${id}`);
+      router.push(`/invoices`);
     } catch (err) {
       setError(err as Error);
       throw err;

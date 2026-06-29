@@ -1,4 +1,4 @@
-import axiosInstance from '@/lib/axios';
+import axiosInstance from '@/lib/api/axios';
 import { Customer, PaginatedResponse, GetCustomersQuery, CreateCustomerDto, UpdateCustomerDto } from '../types/customer.types';
 
 export const customersApi = {

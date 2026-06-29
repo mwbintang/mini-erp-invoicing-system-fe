@@ -11,10 +11,10 @@ import { Spinner } from '@/components/ui/Spinner';
 export default function EditInvoicePage() {
   const params = useParams();
   const id = params.id as string;
-  
+
   const { data, isLoading: isFetching, error: fetchError } = useInvoice(id);
   const { mutate, isLoading: isUpdating, error: updateError } = useUpdateInvoice();
-  
+
   const router = useRouter();
 
   if (isFetching) {
@@ -50,21 +50,19 @@ export default function EditInvoicePage() {
         </div>
       )}
 
-      <InvoiceForm 
+      <InvoiceForm
         initialData={{
           customerId: data.customerId,
           issueDate: new Date(data.issueDate).toISOString().split('T')[0],
           dueDate: new Date(data.dueDate).toISOString().split('T')[0],
-          status: data.status,
-          notes: data.notes || '',
           items: data.items.map(i => ({
             description: i.description,
             quantity: i.quantity,
             unitPrice: i.unitPrice
           })),
-        }} 
-        onSubmit={(formData) => mutate(id, formData)} 
-        isLoading={isUpdating} 
+        }}
+        onSubmit={(formData) => mutate(id, formData)}
+        isLoading={isUpdating}
       />
     </div>
   );

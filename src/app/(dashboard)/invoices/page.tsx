@@ -12,7 +12,7 @@ import { useDeleteInvoice } from '@/modules/invoices/hooks/useDeleteInvoice';
 import { Invoice, InvoiceStatus } from '@/modules/invoices/types/invoice.types';
 import { Button } from '@/components/ui/Button';
 import { Plus } from 'lucide-react';
-import { Spinner } from '@/components/ui/Spinner';
+import { TableSkeleton } from '@/components/ui/Skeleton';
 
 export default function InvoicesPage() {
   const router = useRouter();
@@ -54,7 +54,7 @@ export default function InvoicesPage() {
         </Button>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-center justify-start gap-4 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
         <div className="w-full sm:w-auto">
           <InvoiceSearch value={search} onChange={(val) => { setSearch(val); setPage(1); }} />
         </div>
@@ -70,9 +70,7 @@ export default function InvoicesPage() {
       )}
 
       {isLoading ? (
-        <div className="flex justify-center py-12">
-          <Spinner size="lg" />
-        </div>
+          <TableSkeleton rows={5} />
       ) : (
         <>
           <InvoiceTable invoices={data?.data || []} onDeleteClick={handleDeleteClick} />

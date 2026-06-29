@@ -1,5 +1,8 @@
 import { Customer } from '../types/customer.types';
 import { CustomerActionsDropdown } from './CustomerActionsDropdown';
+import { EmptyTableState } from '@/components/ui/EmptyTableState';
+import { Users } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface CustomerTableProps {
   customers: Customer[];
@@ -7,12 +10,17 @@ interface CustomerTableProps {
 }
 
 export function CustomerTable({ customers, onDeleteClick }: CustomerTableProps) {
+  const router = useRouter();
+
   if (customers.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-200 p-12 text-center bg-gray-50/50">
-        <h3 className="mt-2 text-sm font-semibold text-gray-900">No customers found</h3>
-        <p className="mt-1 text-sm text-gray-500">Get started by creating a new customer.</p>
-      </div>
+      <EmptyTableState
+        icon={Users}
+        title="No customers found"
+        description="Get started by creating a new customer."
+        actionLabel="Add Customer"
+        onAction={() => router.push('/customers/create')}
+      />
     );
   }
 

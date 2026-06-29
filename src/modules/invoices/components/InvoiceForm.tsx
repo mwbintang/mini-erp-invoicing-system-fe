@@ -22,8 +22,6 @@ const invoiceSchema = z.object({
   customerId: z.string().min(1, 'Customer is required'),
   issueDate: z.string().min(1, 'Issue Date is required'),
   dueDate: z.string().min(1, 'Due Date is required'),
-  status: z.nativeEnum(InvoiceStatus).optional(),
-  notes: z.string().optional(),
   items: z.array(invoiceItemSchema).min(1, 'At least one item is required'),
 });
 
@@ -63,11 +61,11 @@ export function InvoiceForm({ initialData, onSubmit, isLoading }: InvoiceFormPro
       {/* Header Info */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700">Customer *</label>
+          <label className="text-sm font-medium text-gray-900">Customer *</label>
           <select
             {...register('customerId')}
             disabled={isLoading || isLoadingCustomers}
-            className="block w-full rounded-xl border border-gray-200 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50"
           >
             <option value="">Select a customer</option>
             {customersData?.data.map((c) => (
@@ -78,14 +76,14 @@ export function InvoiceForm({ initialData, onSubmit, isLoading }: InvoiceFormPro
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700">Issue Date *</label>
-          <Input type="date" {...register('issueDate')} disabled={isLoading} />
+          <label className="text-sm font-medium text-gray-900">Issue Date *</label>
+          <Input type="date" {...register('issueDate')} disabled={isLoading} className="text-center" />
           {errors.issueDate && <p className="text-xs text-red-500">{errors.issueDate.message}</p>}
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-semibold text-gray-700">Due Date *</label>
-          <Input type="date" {...register('dueDate')} disabled={isLoading} />
+          <label className="text-sm font-medium text-gray-900">Due Date *</label>
+          <Input type="date" {...register('dueDate')} disabled={isLoading} className="text-center" />
           {errors.dueDate && <p className="text-xs text-red-500">{errors.dueDate.message}</p>}
         </div>
       </div>

@@ -13,7 +13,7 @@ export function useCreateInvoice() {
       setIsLoading(true);
       setError(null);
       const result = await invoicesService.createInvoice(data);
-      router.push(`/invoices/${result.id}`);
+      router.push(`/invoices`);
       return result;
     } catch (err) {
       setError(err as Error);

@@ -16,7 +16,7 @@ export default function InvoiceDetailPage() {
   const router = useRouter();
 
   const { mutate: updateStatus, isLoading: isUpdatingStatus } = useUpdateInvoiceStatus(() => {
-    refetch();
+    router.push('/invoices');
   });
 
   if (isLoading) {

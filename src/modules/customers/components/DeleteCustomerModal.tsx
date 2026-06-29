@@ -17,7 +17,7 @@ export function DeleteCustomerModal({ isOpen, onClose, onConfirm, isDeleting, cu
           Are you sure you want to delete <strong>{customerName}</strong>? This action cannot be undone.
         </p>
       </div>
-      <div className="flex justify-end space-x-3 pt-4 border-t">
+      <div className="flex justify-end space-x-3 pt-4">
         <Button variant="outline" onClick={onClose} disabled={isDeleting}>
           Cancel
         </Button>

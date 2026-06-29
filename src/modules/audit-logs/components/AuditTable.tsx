@@ -1,7 +1,8 @@
 import { AuditLog } from '../types/audit-log.types';
 import { DataTable } from '@/components/ui/DataTable';
 import { useRouter } from 'next/navigation';
-
+import { EmptyTableState } from '@/components/ui/EmptyTableState';
+import { Activity } from 'lucide-react';
 
 interface AuditTableProps {
   logs: AuditLog[];
@@ -9,6 +10,16 @@ interface AuditTableProps {
 
 export function AuditTable({ logs }: AuditTableProps) {
   const router = useRouter();
+
+  if (logs.length === 0) {
+    return (
+      <EmptyTableState
+        icon={Activity}
+        title="No audit logs found"
+        description="There are no system activities matching your criteria."
+      />
+    );
+  }
 
   const columns = [
     {

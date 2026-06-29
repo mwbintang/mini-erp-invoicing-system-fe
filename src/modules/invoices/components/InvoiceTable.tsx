@@ -2,6 +2,9 @@ import { Invoice } from '../types/invoice.types';
 import { InvoiceActionsDropdown } from './InvoiceActionsDropdown';
 import { StatusBadge } from './StatusBadge';
 import { formatCurrency, formatDate } from '@/lib/utils';
+import { EmptyTableState } from '@/components/ui/EmptyTableState';
+import { FileText } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface InvoiceTableProps {
   invoices: Invoice[];
@@ -9,12 +12,17 @@ interface InvoiceTableProps {
 }
 
 export function InvoiceTable({ invoices, onDeleteClick }: InvoiceTableProps) {
+  const router = useRouter();
+
   if (invoices.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-200 p-12 text-center bg-gray-50/50">
-        <h3 className="mt-2 text-sm font-semibold text-gray-900">No invoices found</h3>
-        <p className="mt-1 text-sm text-gray-500">Get started by creating a new invoice.</p>
-      </div>
+      <EmptyTableState
+        icon={FileText}
+        title="No invoices found"
+        description="Get started by creating a new invoice."
+        actionLabel="Add Invoice"
+        onAction={() => router.push('/invoices/create')}
+      />
     );
   }
 

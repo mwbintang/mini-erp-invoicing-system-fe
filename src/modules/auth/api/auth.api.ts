@@ -1,5 +1,5 @@
-import axiosInstance from '@/lib/axios';
-import { ENDPOINTS } from '@/config/api';
+import axiosInstance from '@/lib/api/axios';
+import { ENDPOINTS } from '@/lib/config/api';
 import { LoginPayload, AuthResponse, User } from '../types/auth.types';
 
 export const authApi = {

@@ -78,14 +78,14 @@ export function InvoiceSummaryCard({ invoice }: { invoice: Invoice }) {
 
         <div className="flex flex-col md:flex-row justify-between gap-8">
           <div className="w-full md:w-1/2">
-            {invoice.notes && (
+            {/* {invoice.notes && (
               <div>
                 <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Notes</h3>
                 <p className="text-sm text-gray-600 bg-gray-50 p-4 rounded-xl italic">
                   {invoice.notes}
                 </p>
               </div>
-            )}
+            )} */}
           </div>
           <div className="w-full md:w-1/3 space-y-3 text-sm border-t border-gray-100 md:border-none pt-4 md:pt-0">
             <div className="flex justify-between text-gray-600">

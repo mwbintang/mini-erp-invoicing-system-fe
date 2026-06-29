@@ -34,36 +34,36 @@ export function CustomerForm({ initialData, onSubmit, isLoading }: CustomerFormP
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white p-6 rounded-lg border">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 bg-white p-8 rounded-2xl border border-gray-100 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Name *</label>
+          <label className="text-sm font-medium text-gray-900">Name *</label>
           <Input {...register('name')} disabled={isLoading} placeholder="John Doe" />
           {errors.name && <p className="text-xs text-red-500">{errors.name.message}</p>}
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Email *</label>
+          <label className="text-sm font-medium text-gray-900">Email *</label>
           <Input {...register('email')} type="email" disabled={isLoading} placeholder="john@example.com" />
           {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Phone</label>
+          <label className="text-sm font-medium text-gray-900">Phone</label>
           <Input {...register('phone')} disabled={isLoading} placeholder="+1 234 567 890" />
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Address</label>
+          <label className="text-sm font-medium text-gray-900">Address</label>
           <Input {...register('address')} disabled={isLoading} placeholder="123 Main St, City" />
         </div>
       </div>
 
-      <div className="flex justify-end space-x-4 border-t pt-4">
+      <div className="flex justify-end space-x-4 border-t border-gray-100 pt-6">
         <Button variant="outline" type="button" onClick={() => router.back()} disabled={isLoading}>
           Cancel
         </Button>
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading} className="bg-indigo-600 hover:bg-indigo-700 text-white px-8">
           {isLoading ? 'Saving...' : 'Save Customer'}
         </Button>
       </div>

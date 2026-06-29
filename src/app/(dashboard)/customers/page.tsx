@@ -11,7 +11,7 @@ import { useDeleteCustomer } from '@/modules/customers/hooks/useDeleteCustomer';
 import { Customer } from '@/modules/customers/types/customer.types';
 import { Button } from '@/components/ui/Button';
 import { Plus } from 'lucide-react';
-import { Spinner } from '@/components/ui/Spinner';
+import { TableSkeleton } from '@/components/ui/Skeleton';
 
 export default function CustomersPage() {
   const router = useRouter();
@@ -63,9 +63,7 @@ export default function CustomersPage() {
       )}
 
       {isLoading ? (
-        <div className="flex justify-center py-12">
-          <Spinner size="lg" />
-        </div>
+          <TableSkeleton rows={5} />
       ) : (
         <>
           <CustomerTable customers={data?.data || []} onDeleteClick={handleDeleteClick} />

@@ -1,4 +1,4 @@
-import axiosInstance from '@/lib/axios';
+import axiosInstance from '@/lib/api/axios';
 import { PaginatedResponse } from '@/modules/customers/types/customer.types';
 import { 
   Invoice, 

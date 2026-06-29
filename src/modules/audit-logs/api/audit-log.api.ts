@@ -1,4 +1,4 @@
-import axiosInstance from '@/lib/axios';
+import axiosInstance from '@/lib/api/axios';
 import { GetAuditLogsQuery, PaginatedAuditLogResponse, AuditLog } from '../types/audit-log.types';
 
 export const auditLogApi = {

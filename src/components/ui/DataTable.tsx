@@ -11,8 +11,8 @@ export function DataTable<T>({ data, columns, className }: DataTableProps<T>) {
   return (
     <div className={cn('w-full overflow-auto', className)}>
       <table className="w-full caption-bottom text-sm">
-        <thead className="[&_tr]:border-b">
-          <tr className="border-b transition-colors hover:bg-gray-100/50 data-[state=selected]:bg-gray-100">
+        <thead className="[&_tr]:border-b [&_tr]:border-gray-200">
+          <tr className="border-b border-gray-200 transition-colors hover:bg-gray-100/50 data-[state=selected]:bg-gray-100">
             {columns.map((col, index) => (
               <th
                 key={String(col.key) + index}
@@ -34,7 +34,7 @@ export function DataTable<T>({ data, columns, className }: DataTableProps<T>) {
             data.map((item, i) => (
               <tr
                 key={i}
-                className="border-b transition-colors hover:bg-gray-100/50 data-[state=selected]:bg-gray-100"
+                className="border-b border-gray-200 transition-colors hover:bg-gray-100/50 data-[state=selected]:bg-gray-100"
               >
                 {columns.map((col, j) => (
                   <td key={String(col.key) + j} className="p-4 align-middle">

@@ -1,4 +1,4 @@
-import axiosInstance from '@/lib/axios';
+import axiosInstance from '@/lib/api/axios';
 import { DashboardSummary } from '../types/dashboard.types';
 
 export const dashboardApi = {

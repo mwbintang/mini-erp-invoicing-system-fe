@@ -29,7 +29,6 @@ export interface Invoice {
   taxAmount: number;
   taxRate: number;
   totalAmount: number;
-  notes?: string;
   integrityHash?: string;
   createdAt: string;
   updatedAt: string;
@@ -55,8 +54,6 @@ export interface CreateInvoiceDto {
   customerId: string;
   issueDate: string;
   dueDate: string;
-  status?: InvoiceStatus;
-  notes?: string;
   items: CreateInvoiceItemDto[];
 }
 
@@ -64,7 +61,6 @@ export interface UpdateInvoiceDto {
   customerId?: string;
   issueDate?: string;
   dueDate?: string;
-  notes?: string;
   items?: CreateInvoiceItemDto[];
 }
 
